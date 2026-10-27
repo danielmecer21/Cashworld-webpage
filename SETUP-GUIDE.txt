@@ -1,0 +1,105 @@
+CASH WORLD WEBSITE - SETUP GUIDE
+================================
+
+Everything works right now in DEMO MODE (nothing to set up). In demo mode,
+reviews are saved only in the browser you test in, so real customers cannot
+see each other's reviews yet. To go live, do PART A (reviews) and PART B (ads).
+You only ever edit one file: js/config.js
+
+------------------------------------------------------------
+TRY IT FIRST (demo mode)
+------------------------------------------------------------
+1. Open reviews.html in your browser, send a test review.
+2. Open admin.html in the SAME browser. You will see it waiting.
+3. Press Publish, write a reply, then go back to reviews.html.
+(Demo mode has no login. Do not upload the site for real use without Part A.)
+
+------------------------------------------------------------
+PART A - REAL REVIEWS (Firebase, free plan is enough)
+------------------------------------------------------------
+1. Go to https://console.firebase.google.com and sign in with a Google account.
+   Click "Create a project" and follow the steps (you can switch Analytics off).
+
+2. In the project, click the "</>" (Web) icon to add a web app. Give it any name.
+   Firebase shows a block of code with: apiKey, authDomain, projectId, appId.
+   Copy those 4 values into js/config.js, between the quote marks.
+
+3. Left menu > Build > Firestore Database > Create database.
+   Choose "Start in production mode", pick a location near you, then Enable.
+
+4. Left menu > Build > Authentication > Get started > Sign-in method >
+   Email/Password > Enable > Save.
+
+5. Authentication > Users tab > Add user. Type YOUR admin email and a strong
+   password. This is how you will sign in to admin.html.
+   After it is created, copy the "User UID" shown in the list.
+
+6. Open the file firestore.rules in this folder. Replace PUT_ADMIN_UID_HERE
+   with the User UID you copied. Then in Firebase go to
+   Firestore Database > Rules, paste the whole file, and press Publish.
+   (Until you do this, nobody can read reviews, which is the safe default.)
+
+7. Authentication > Settings > Authorized domains > Add your real website
+   domain (for example cashworld.co.zw). Without this, sign-in fails online.
+
+8. Upload the site. Open yourdomain/admin.html, sign in with the email and
+   password from step 5. Reviews customers send appear here as "Waiting".
+   You decide what to Publish. You can reply to, hide or delete any review.
+
+Notes
+- New reviews are never public until you press Publish.
+- admin.html is hidden from search engines and is not linked in the menu, but
+  the password is what really protects it.
+- Keep the admin password private. If you lose it, use "Add user" again or
+  reset it in Firebase > Authentication.
+
+------------------------------------------------------------
+PART B - GOOGLE ADS (AdSense)
+------------------------------------------------------------
+Google decides whether to approve a site. This site is built to meet the
+technical needs (privacy policy page, ads.txt, an ad-consent notice, clearly
+labelled ad boxes), but approval is not guaranteed. It usually needs a real
+domain you own (not a free test address), plenty of your own original content,
+and a few weeks of normal traffic.
+
+1. Sign up at https://adsense.google.com and add your website address.
+
+2. AdSense gives you a Publisher ID like  ca-pub-1234567890123456.
+   Put it in js/config.js  (adsense > client).
+
+3. For the home page only, open index.html and replace
+   ca-pub-XXXXXXXXXXXXXXXX  in the line  <meta name="google-adsense-account" ...>
+   with your Publisher ID. (Dreamweaver: Edit > Find and Replace.)
+
+4. Open ads.txt. AdSense shows you the exact line to use
+   (AdSense > Sites > ads.txt). Paste it in, delete the leading "#".
+   ads.txt must sit next to index.html on your website.
+
+5. Upload everything and ask AdSense to review the site.
+
+6. After approval, either:
+   a) turn on Auto ads in AdSense (nothing else to do), or
+   b) AdSense > Ads > By ad unit > create a "Display ad", copy its number
+      (the data-ad-slot value) into js/config.js (adsense > slots > inline).
+      Boxes marked "Advertisement" then fill in on 5 pages.
+
+How ads behave on this site
+- Visitors see a small notice and ads load only after they press Accept.
+- There are no ads on the Contact page or the admin page.
+- Never click your own ads, and never ask others to. Google can ban the account.
+- Visitors from Europe/UK: Google requires its own consent message for them.
+  In AdSense go to Privacy & messaging and turn on the free European
+  regulations message.
+- Please read privacy.html and check it matches how you run the business.
+  It is a sensible starting point, not legal advice.
+
+------------------------------------------------------------
+FILES ADDED
+------------------------------------------------------------
+reviews.html      public page: read reviews, leave a review
+admin.html        your private page: read, publish, hide, delete, reply
+privacy.html      privacy policy (needed for ads)
+ads.txt           for AdSense (fill in after approval)
+firestore.rules   database security rules for Part A, step 6
+js/config.js      the one file you edit (database + ad settings)
+js/reviews.js, js/reviews-page.js, js/admin.js, js/ads.js    the working parts

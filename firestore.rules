@@ -1,0 +1,35 @@
+// Paste this into Firebase Console > Firestore Database > Rules, then press Publish.
+//
+// BEFORE you publish: replace PUT_ADMIN_UID_HERE (it appears once, near the top)
+// with the User UID of your admin account (Firebase > Authentication > Users).
+//
+// What these rules do:
+//  - Anyone can SEND a review, but only as "pending", with limited length and no reply.
+//  - The public can READ only reviews you have approved.
+//  - Only your admin account can read everything, approve, hide, reply or delete.
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function isAdmin() {
+      return request.auth != null && request.auth.uid == 'PUT_ADMIN_UID_HERE';
+    }
+
+    match /reviews/{id} {
+
+      allow create: if request.resource.data.keys().hasOnly(['name', 'rating', 'text', 'status', 'createdAt'])
+        && request.resource.data.status == 'pending'
+        && request.resource.data.name is string
+        && request.resource.data.name.size() >= 1 && request.resource.data.name.size() <= 60
+        && request.resource.data.rating is int
+        && request.resource.data.rating >= 1 && request.resource.data.rating <= 5
+        && request.resource.data.text is string
+        && request.resource.data.text.size() >= 5 && request.resource.data.text.size() <= 800
+        && request.resource.data.createdAt is number;
+
+      allow read: if resource.data.status == 'approved' || isAdmin();
+
+      allow update, delete: if isAdmin();
+    }
+  }
+}

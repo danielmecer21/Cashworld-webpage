@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#0A1F3D">
+<title>Your Trusted Money Partner | Cash World</title>
+<meta name="description" content="Cash World is a bureau de change and money transfer business in Zimbabwe with 8 branches.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="js/theme.js"></script>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a href="index.html" class="logo" aria-label="Cash World home"><img class="logo-img" src="images/ChatGPT Image Jun 30, 2026, 11_26_32 AM (1).png" width="285" height="112" alt="Cash World"></a>
+    <nav>
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to dark mode" title="Switch to dark mode"></button>
+      <button class="menu-btn" aria-label="Menu" onclick="document.getElementById('menu').classList.toggle('open')">☰</button>
+      <ul id="menu">
+        <li><a class="link" href="services.html">Services</a></li>
+        <li><a class="link" href="how-it-works.html">How it works</a></li>
+        <li><a class="link" href="why-us.html">Why us</a></li>
+        <li><a class="link" href="branches.html">Branches</a></li>
+        <li><a class="link" href="contact.html">Contact</a></li>
+        <li><a class="btn btn-gold" style="padding:10px 20px" href="index.html#rates">Check rates</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow" style="color:var(--gold)">Bureau de Change · Money Transfer</span>
+      <h1>Your <em>Trusted</em> Money Partner, across Zimbabwe.</h1>
+      <p class="lead">Exchange currency, send and receive money, and pay your bills in minutes. Fair rates, friendly service and 8 branches near you.</p>
+      <div class="hero-cta">
+        <a class="btn btn-gold" href="#rates">Convert currency →</a>
+        <a class="btn btn-ghost" href="branches.html">Find a branch</a>
+      </div>
+      <div class="trust">
+        <div><b>8</b>Branches</div>
+        <div><b>4+</b>Transfer partners</div>
+        <div><b>Same-day</b>Service</div>
+      </div>
+    </div>
+
+    <div class="calc-wrap">
+      <div class="coin c1" aria-hidden="true">$</div>
+      <div class="coin c2" aria-hidden="true">€</div>
+      <div class="coin c3" aria-hidden="true">£</div>
+    <div class="calc" id="rates">
+      <h3>Currency calculator</h3>
+      <p class="sub">Indicative rates. Visit a branch or call for today's exact rate.</p>
+      <div class="field">
+        <label for="amt">You give</label>
+        <div class="row">
+          <input id="amt" type="number" min="0" value="100" inputmode="decimal">
+          <select id="from"></select>
+        </div>
+      </div>
+      <button class="swap" id="swap" aria-label="Swap currencies">⇅</button>
+      <div class="field">
+        <label for="to">You get</label>
+        <div class="row">
+          <select id="to" style="max-width:none"></select>
+        </div>
+      </div>
+      <div class="result">
+        <div><small id="rateline">Rate</small><strong id="out">0.00</strong></div>
+        <a class="btn btn-gold" style="padding:10px 18px;font-size:.85rem" id="waquote" href="#" target="_blank" rel="noopener">Get quote</a>
+      </div>
+      <p class="disclaimer">Calculator is a guide only and is not a binding offer.</p>
+    </div>
+    </div>
+  </div>
+</section>
+
+<div class="ticker" aria-hidden="true"><div class="ticker-track" id="tickerTrack"></div></div>
+
+<section id="services">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">What we do</span>
+      <h2>Everything you need to move your money.</h2>
+      <p>One counter, many solutions. Simple, secure and built for how Zimbabweans actually send, spend and save.</p>
+    </div>
+    <div class="grid-4">
+      <div class="card reveal"><div class="icon">💱</div><h3>Currency Exchange</h3><p>Buy and sell major currencies at competitive, transparent rates with no hidden fees.</p></div>
+      <div class="card reveal"><div class="icon">🌍</div><h3>Money Transfer</h3><p>Send or collect money locally and internationally through trusted global partners.</p></div>
+      <div class="card reveal"><div class="icon">🧾</div><h3>Bill Payments</h3><p>Pay utilities, airtime and other bills at our branches without the queues elsewhere.</p></div>
+      <div class="card reveal"><div class="icon">🏦</div><h3>Agent Banking</h3><p>Coming soon: everyday banking services through our partnership with Agri Bank.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="currencies" id="currencies">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Currencies</span>
+      <h2>Major currencies, one counter.</h2>
+      <p>Tap a currency to ask for today's rate on WhatsApp.</p>
+    </div>
+    <div class="note-grid" id="noteGrid"></div>
+    <p class="note-disc">Indicative rates against 1 USD. Visit a branch or message us for today's exact rate.</p>
+  </div>
+</section>
+
+<div class="partners">
+  <div class="wrap">
+    <p class="t">Send and receive through trusted partners</p>
+    <div class="chips">
+      <div class="chip">WorldRemit</div>
+      <div class="chip">Western Union</div>
+      <div class="chip">Mukuru</div>
+      <div class="chip">EcoCash</div>
+    </div>
+  </div>
+</div>
+
+<section id="why">
+  <div class="wrap why-grid">
+    <div class="reveal">
+      <span class="eyebrow">Why Cash World</span>
+      <h2 style="font-size:clamp(1.8rem,4vw,2.6rem);margin-bottom:24px">Built on trust, powered by people.</h2>
+      <ul class="why-list">
+        <li><div class="tick">✓</div><div><b>Fair, transparent rates</b><span>You see what you get before you commit.</span></div></li>
+        <li><div class="tick">✓</div><div><b>Secure and compliant</b><span>Safe handling of your money and information, every time.</span></div></li>
+        <li><div class="tick">✓</div><div><b>Close to you</b><span>8 branches across Harare, Bulawayo, Mutare, Masvingo and more.</span></div></li>
+        <li><div class="tick">✓</div><div><b>Fast, friendly service</b><span>Helpful staff who explain everything in plain language.</span></div></li>
+      </ul>
+    </div>
+    <div class="why-box reveal">
+      <h3>"Your Trusted Money Partner"</h3>
+      <p>From small everyday exchanges to regular family remittances, we treat every transaction with the same care.</p>
+      <div class="big">8<small>BRANCHES ACROSS ZIMBABWE</small></div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-band">
+  <div class="wrap">
+    <h2>Ready to exchange or send money?</h2>
+    <p>Visit your nearest branch or message us on WhatsApp for today's rate.</p>
+    <div class="row-btns">
+      <a class="btn btn-navy" href="branches.html">Find a branch</a>
+      <a class="btn btn-navy" href="contact.html">Contact us</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="f-grid">
+      <div>
+        <a href="index.html" class="logo logo-foot" aria-label="Cash World home"><img class="logo-img" src="images/ChatGPT Image Jun 30, 2026, 11_26_32 AM (1).png" width="285" height="112" alt="Cash World"></a>
+        <p style="margin-top:14px;max-width:300px;font-size:.92rem">Your Trusted Money Partner. Bureau de change, money transfer and bill payments in Zimbabwe.</p>
+        <div class="socials">
+          <a href="#" target="_blank" rel="noopener">Facebook</a>
+          <a href="#" target="_blank" rel="noopener">Instagram</a>
+          <a href="#" target="_blank" rel="noopener">TikTok</a>
+          <a href="https://wa.me/263778577281" target="_blank" rel="noopener">WhatsApp</a>
+        </div>
+      </div>
+      <div><h4>Explore</h4><ul><li><a href="services.html">Services</a></li><li><a href="how-it-works.html">How it works</a></li><li><a href="why-us.html">Why us</a></li><li><a href="branches.html">Branches</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+      <div><h4>Contact</h4><ul><li>+263 242 753 437</li><li>+263 77 857 7281</li><li>chauke@cashworld.co.zw</li><li>cashworld.co.zw</li></ul></div>
+    </div>
+    <div class="copy"><span>© <span id="yr"></span> Cash World. All rights reserved.</span><span>Zimbabwe</span></div>
+  </div>
+</footer>
+<a class="wa" href="https://wa.me/263778577281" target="_blank" rel="noopener">💬 Chat on WhatsApp</a>
+
+<script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,4 @@
+# ads.txt - keep this file in the root of your website (next to index.html).
+# After AdSense approves your site, replace the line below with the exact line
+# AdSense shows you (AdSense > Sites > ads.txt), then delete the leading "#".
+# google.com, pub-XXXXXXXXXXXXXXXX, DIRECT, f08c47fec0942fa0

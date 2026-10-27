@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#0A1F3D">
+<title>Contact | Cash World</title>
+<meta name="description" content="Contact Cash World by phone, email or WhatsApp.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="js/theme.js"></script>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a href="index.html" class="logo" aria-label="Cash World home"><img class="logo-img" src="images/ChatGPT Image Jun 30, 2026, 11_26_32 AM (1).png" width="285" height="112" alt="Cash World"></a>
+    <nav>
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to dark mode" title="Switch to dark mode"></button>
+      <button class="menu-btn" aria-label="Menu" onclick="document.getElementById('menu').classList.toggle('open')">☰</button>
+      <ul id="menu">
+        <li><a class="link" href="services.html">Services</a></li>
+        <li><a class="link" href="how-it-works.html">How it works</a></li>
+        <li><a class="link" href="why-us.html">Why us</a></li>
+        <li><a class="link" href="branches.html">Branches</a></li>
+        <li><a class="link active" href="contact.html">Contact</a></li>
+        <li><a class="btn btn-gold" style="padding:10px 20px" href="index.html#rates">Check rates</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+<section class="page-hero" style="padding-bottom:56px">
+  <div class="wrap">
+    <div class="crumbs"><a href="index.html">Home</a> / Contact</div>
+    <h1>Contact us</h1>
+    <p>Questions about rates, transfers or services? We're here to help.</p>
+  </div>
+</section>
+<section id="contact">
+  <div class="wrap contact-grid">
+    <div class="contact-info reveal">
+      <span class="eyebrow">Get in touch</span>
+      <h2 style="font-size:clamp(1.8rem,4vw,2.6rem);margin-bottom:14px">Let's talk money.</h2>
+      <p>Questions about rates, transfers or services? Send us a message and we'll reply as soon as we can.</p>
+      <div class="ci"><div class="icon">📍</div><div><b>Head Office, Harare</b>130, 2nd Avenue, Showgrounds, Harare</div></div>
+      <div class="ci"><div class="icon">📞</div><div><b>Call us</b><a href="tel:+263242753437">+263 242 753 437</a> · <a href="tel:+263778577281">+263 77 857 7281</a></div></div>
+      <div class="ci"><div class="icon">✉️</div><div><b>Email</b><a href="mailto:chauke@cashworld.co.zw">chauke@cashworld.co.zw</a></div></div>
+    </div>
+    <form class="form reveal" id="contactForm">
+      <div class="field"><label for="name">Full name</label><input id="name" required placeholder="Your name"></div>
+      <div class="field"><label for="phone">Phone / WhatsApp</label><input id="phone" required placeholder="+263 ..."></div>
+      <div class="field"><label for="topic">I'm interested in</label>
+        <select id="topic"><option>Currency exchange</option><option>Money transfer</option><option>Bill payments</option><option>Something else</option></select></div>
+      <div class="field"><label for="msg">Message</label><textarea id="msg" placeholder="How can we help?"></textarea></div>
+      <button class="btn btn-navy" type="submit" style="width:100%;justify-content:center">Send via WhatsApp</button>
+    </form>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="f-grid">
+      <div>
+        <a href="index.html" class="logo logo-foot" aria-label="Cash World home"><img class="logo-img" src="images/ChatGPT Image Jun 30, 2026, 11_26_32 AM (1).png" width="285" height="112" alt="Cash World"></a>
+        <p style="margin-top:14px;max-width:300px;font-size:.92rem">Your Trusted Money Partner. Bureau de change, money transfer and bill payments in Zimbabwe.</p>
+        <div class="socials">
+          <a href="#" target="_blank" rel="noopener">Facebook</a>
+          <a href="#" target="_blank" rel="noopener">Instagram</a>
+          <a href="#" target="_blank" rel="noopener">TikTok</a>
+          <a href="https://wa.me/263778577281" target="_blank" rel="noopener">WhatsApp</a>
+        </div>
+      </div>
+      <div><h4>Explore</h4><ul><li><a href="services.html">Services</a></li><li><a href="how-it-works.html">How it works</a></li><li><a href="why-us.html">Why us</a></li><li><a href="branches.html">Branches</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+      <div><h4>Contact</h4><ul><li>+263 242 753 437</li><li>+263 77 857 7281</li><li>chauke@cashworld.co.zw</li><li>cashworld.co.zw</li></ul></div>
+    </div>
+    <div class="copy"><span>© <span id="yr"></span> Cash World. All rights reserved.</span><span>Zimbabwe</span></div>
+  </div>
+</footer>
+<a class="wa" href="https://wa.me/263778577281" target="_blank" rel="noopener">💬 Chat on WhatsApp</a>
+
+<script src="js/main.js"></script>
+</body>
+</html>
