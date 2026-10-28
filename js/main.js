@@ -28,8 +28,12 @@ const BRANCHES = [
   {city:"Masvingo", addr:"2nd Floor, Room 2, Masvingo", tel:["+263 717 471 600"]},
   {city:"Kwekwe", addr:"21 Nelson Mandela Way / 2nd, Kwekwe", tel:["+263 710 384 056"]},
   {city:"Bindura", addr:"C12 2nd Floor, Simwami Complex, Opposite N Richards, Bindura", tel:["+263 711 471 587"]},
-  {city:"Zvishavane", addr:"Tees Complex, 1st Floor, Office 107, Zvishavane", tel:["+263 717 471 587"]}
-  // Add your 8th branch here: {city:"...", addr:"...", tel:["..."]}
+  {city:"Zvishavane", addr:"Tees Complex, 1st Floor, Office 107, Zvishavane", tel:["+263 717 471 587"]},
+  {city:"Gweru", addr:"Shop 20, Bahudur Centre (upstairs), Gweru", tel:["+263 711 910 174"]},
+  {city:"Chiredzi", addr:"5466 Lion Drive, Chiredzi", tel:[], map:"https://business.google.com/n/9050032947305470139/searchprofile"},
+  {city:"Shurugwi", addr:"", tel:[]},
+  {city:"Kadoma", addr:"", tel:[]}
+  // Add another branch here: {city:"...", addr:"...", tel:["..."], map:"(optional Google Maps link)"}
 ];
 /* ==================================== */
 
@@ -66,8 +70,9 @@ if ($("branchGrid")) {
       <div class="branch">
         ${b.hq?'<span class="hq">HEAD OFFICE</span>':''}
         <h3>${b.city}</h3>
-        <p>📍 ${b.addr}</p>
-        ${b.tel.length ? b.tel.map(t=>`<p><a href="tel:${t.replace(/\s/g,'')}">📞 ${t}</a></p>`).join("") : '<p><a href="contact.html">Contact us for details</a></p>'}
+        ${b.addr ? `<p>📍 ${b.addr}</p>` : ''}
+        ${b.tel.length ? b.tel.map(t=>`<p><a href="tel:${t.replace(/\s/g,'')}">📞 ${t}</a></p>`).join("") : (b.map ? '' : '<p><a href="contact.html">Contact us for details</a></p>')}
+        ${b.map ? `<p><a href="${b.map}" target="_blank" rel="noopener">🗺️ View on Google</a></p>` : ''}
       </div>`).join("");
     document.querySelectorAll(".tab").forEach(t => t.classList.toggle("active", t.dataset.c===filter));
   };
