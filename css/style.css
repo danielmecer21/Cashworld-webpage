@@ -286,3 +286,113 @@ nav a.link.active{color:var(--gold)}
   .reveal{opacity:1;transform:none}
   .ticker{overflow-x:auto}
 }
+
+/* =========================================================
+   ADDITIONS - buttons, consent bar, privacy page, phone layout
+   ========================================================= */
+
+/* outline button + small button (used by the privacy page and the ads notice) */
+.btn-line{background:transparent;border-color:var(--border-2);color:var(--accent)}
+.btn-line:hover{border-color:var(--gold);background:var(--gold-soft)}
+.btn-sm{padding:10px 20px;font-size:.88rem}
+
+/* advertising choice bar (built by js/ads.js) */
+.consent{position:fixed;left:16px;right:16px;bottom:16px;z-index:70;max-width:760px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:14px 18px;flex-wrap:wrap;background:var(--surface);color:var(--ink);border:1px solid var(--border-2);border-radius:18px;padding:16px 20px;box-shadow:var(--shadow)}
+.consent p{flex:1 1 280px;font-size:.9rem;color:var(--muted)}
+.consent p a{color:var(--accent);font-weight:600;text-decoration:underline}
+.consent-btns{display:flex;gap:10px;flex-wrap:wrap}
+.consent .btn{padding:10px 20px;font-size:.88rem}
+
+/* PRIVACY PAGE */
+.pv-hero{padding-bottom:88px}
+.pv-meta{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+.pv-pill{display:inline-flex;align-items:center;gap:8px;padding:7px 14px;border-radius:999px;background:rgba(255,255,255,.08);border:1px solid rgba(212,175,55,.4);color:#f3e6b0;font-size:.82rem;font-weight:600}
+
+.pv-glance{padding:0;margin-top:-44px;position:relative;z-index:2}
+.pv-glance-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.pv-g{display:flex;gap:14px;align-items:flex-start;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow)}
+.pv-g b{display:block;color:var(--heading);font-size:.98rem;margin-bottom:2px}
+.pv-g div span{display:block;color:var(--muted);font-size:.86rem;line-height:1.5}
+.pv-ic{flex:none;width:44px;height:44px;border-radius:12px;background:var(--gold-soft);display:grid;place-items:center;font-size:1.25rem}
+
+.pv-main{padding:56px 0 84px}
+.pv-layout{display:grid;grid-template-columns:250px minmax(0,1fr);gap:40px;align-items:start}
+
+/* "On this page" list: sticky side list on desktop, scrolling chips on phones */
+.pv-toc{display:block;position:sticky;top:94px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:18px}
+.pv-toc-title{font-size:.74rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-2);margin:0 0 10px 12px}
+.pv-toc ol{list-style:none;counter-reset:pv;display:grid;gap:2px;position:relative}
+.pv-toc li{counter-increment:pv}
+.pv-toc a{display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:10px;border-left:3px solid transparent;font-size:.92rem;font-weight:500;color:var(--muted);transition:.2s}
+.pv-toc a::before{content:counter(pv);flex:none;width:22px;height:22px;border-radius:7px;background:var(--surface-2);border:1px solid var(--border);display:grid;place-items:center;font-size:.72rem;font-weight:700;color:var(--muted)}
+.pv-toc a:hover{color:var(--heading);background:var(--surface-2)}
+.pv-toc a.on{color:var(--heading);font-weight:600;background:var(--gold-soft);border-left-color:var(--gold)}
+.pv-toc a.on::before{background:var(--gold);border-color:var(--gold);color:var(--navy)}
+
+.pv-sec{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:30px 32px;margin-bottom:20px;scroll-margin-top:96px}
+.pv-sec:last-child{margin-bottom:0}
+.pv-sec h2{display:flex;align-items:center;gap:14px;font-size:clamp(1.25rem,3vw,1.5rem);margin-bottom:14px}
+.pv-num{flex:none;width:36px;height:36px;border-radius:11px;background:var(--gold);color:var(--navy);display:grid;place-items:center;font-family:'Inter',system-ui,sans-serif;font-weight:700;font-size:.92rem}
+.pv-sec p{color:var(--muted);margin-bottom:12px}
+.pv-sec p:last-child{margin-bottom:0}
+.pv-sec a.tx{color:var(--accent);font-weight:600;text-decoration:underline;text-decoration-color:var(--gold);text-underline-offset:3px;overflow-wrap:anywhere}
+.pv-sec a.tx:hover{color:var(--gold-2)}
+
+.pv-items{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.pv-item{background:var(--surface-2);border:1px solid var(--border);border-radius:14px;padding:18px}
+.pv-item .ic{font-size:1.4rem;line-height:1;margin-bottom:10px}
+.pv-item h3{font-size:1.05rem;margin-bottom:6px}
+.pv-sec .pv-item p{font-size:.92rem;margin:0}
+.pv-sec .pv-note{margin-top:16px;padding:14px 16px;border-radius:12px;background:var(--gold-soft);border-left:4px solid var(--gold);color:var(--ink);font-size:.92rem}
+.pv-note b{color:var(--heading)}
+
+.pv-contact{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-top:6px}
+.pv-cc{display:flex;gap:14px;align-items:center;min-width:0;padding:16px;background:var(--surface-2);border:1px solid var(--border);border-radius:14px;transition:.2s}
+a.pv-cc:hover{border-color:var(--gold);transform:translateY(-3px);box-shadow:var(--shadow)}
+.pv-cc>span:last-child{min-width:0}
+.pv-cc b{display:block;font-size:.74rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.pv-cc b+span{display:block;color:var(--heading);font-weight:600;overflow-wrap:anywhere}
+
+/* SERVICES: 5 cards read as 3 + 2 on desktop, 2 on tablets, 1 on phones */
+.svc-grid{grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr))}
+
+@media(max-width:960px){
+  .pv-glance-grid{grid-template-columns:1fr 1fr}
+  .pv-layout{display:block}
+  .pv-toc{top:71px;z-index:40;margin:0 -20px 20px;padding:10px 20px;border:0;border-bottom:1px solid var(--border);border-radius:0;background:var(--page)}
+  .pv-toc-title{display:none}
+  .pv-toc ol{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+  .pv-toc ol::-webkit-scrollbar{display:none}
+  .pv-toc li{flex:none}
+  .pv-toc a{padding:8px 14px;border:1.5px solid var(--border-2);border-radius:999px;background:var(--surface);white-space:nowrap;font-size:.86rem}
+  .pv-toc a::before{display:none}
+  .pv-toc a.on{border-color:var(--gold)}
+  .pv-sec{scroll-margin-top:140px}
+}
+
+/* PHONES: make every service, partner and button easy to read and tap */
+@media(max-width:700px){
+  .pv-hero{padding-bottom:78px}
+  .pv-glance{margin-top:-36px}
+  .pv-glance-grid{grid-template-columns:1fr;gap:12px}
+  .pv-main{padding:28px 0 64px}
+  .pv-sec{padding:22px 18px;border-radius:16px}
+  .pv-items,.pv-contact{grid-template-columns:1fr}
+
+  /* service cards: icon on the left, text on the right, so all of them fit on screen */
+  .grid-4{gap:14px}
+  .grid-4 .card{display:grid;grid-template-columns:52px 1fr;column-gap:16px;align-items:start;padding:20px}
+  .grid-4 .card .icon{grid-row:1 / span 2;margin:0}
+  .grid-4 .card h3{margin-bottom:4px}
+  .grid-4 .card p{grid-column:2}
+  .grid-4 .card:hover{transform:none}
+
+  /* partner chips: smaller so they sit two or three to a row */
+  .partners{padding:40px 0}
+  .chips{gap:10px}
+  .chip{padding:10px 16px;font-size:.88rem}
+
+  /* floating WhatsApp button: smaller, and the footer leaves room for it */
+  .wa{right:14px;bottom:14px;padding:12px 16px;font-size:.85rem}
+  footer{padding-bottom:88px}
+}

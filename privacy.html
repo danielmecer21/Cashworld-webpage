@@ -12,7 +12,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <script src="js/theme.js"></script>
 <link rel="stylesheet" href="css/style.css">
-
 </head>
 <body>
 
@@ -36,40 +35,133 @@
 </header>
 
 <main id="top">
-<section class="page-hero" style="padding-bottom:56px">
+
+<section class="page-hero pv-hero">
   <div class="wrap">
     <div class="crumbs"><a href="index.html">Home</a> / Privacy policy</div>
     <h1>Privacy policy</h1>
-    <p>How Cash World handles information on this website. Last updated October 2026.</p>
+    <p>How Cash World handles information on this website.</p>
+    <div class="pv-meta">
+      <span class="pv-pill">📅 Last updated October 2026</span>
+      <span class="pv-pill">🌐 Applies to cashworld.co.zw</span>
+    </div>
   </div>
 </section>
-<section>
-  <div class="wrap prose">
-    <h2>Who we are</h2>
-    <p>Cash World is a bureau de change and money transfer business in Zimbabwe. This website, cashworld.co.zw, gives information about our services and branches.</p>
 
-    <h2>What we collect</h2>
-    <ul>
-      <li><b>Reviews.</b> If you send a review we store the name you type, your star rating, your comment and the date. We may publish it, and we may publish a reply to it. Please do not put phone numbers, ID numbers or other private details in a review.</li>
-      <li><b>Contact form.</b> The contact form does not send anything to our servers. It opens WhatsApp with your message so you can send it to us yourself. WhatsApp's own privacy policy applies from that point.</li>
-      <li><b>Calculator.</b> The currency calculator runs in your browser. We do not save what you type.</li>
-      <li><b>Your settings.</b> We save your light or dark mode choice and your advertising choice in your browser.</li>
-    </ul>
-
-    <h2>Where reviews are stored</h2>
-    <p>Reviews are stored with Google Firebase (Cloud Firestore), a service provided by Google. Only our administrator can see unpublished reviews or remove reviews.</p>
-
-    <h2>Advertising</h2>
-    <p>This site may show ads served by Google AdSense. Google and its partners may use cookies to show ads based on your visits to this and other websites. Ads load only if you press "Accept" on our notice. You can read how Google uses information from sites that use its services at <a href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener">policies.google.com/technologies/partner-sites</a>, and turn off personalised ads at <a href="https://adssettings.google.com" target="_blank" rel="noopener">adssettings.google.com</a>.</p>
-    <p><button class="btn btn-line btn-sm" id="adChoiceBtn" type="button" hidden onclick="window.cwAdsChoice &amp;&amp; window.cwAdsChoice()">Change my advertising choice</button></p>
-
-    <h2>Your rights</h2>
-    <p>You can ask us to remove a review you sent, or to tell you what we hold about you, by contacting us below.</p>
-
-    <h2>Contact</h2>
-    <p>Email <a href="mailto:chauke@cashworld.co.zw">chauke@cashworld.co.zw</a> or call +263 242 753 437. Head office: 130, 2nd Avenue, Showgrounds, Harare.</p>
+<!-- AT A GLANCE -->
+<section class="pv-glance" aria-label="Privacy at a glance">
+  <div class="wrap">
+    <div class="pv-glance-grid">
+      <div class="pv-g reveal">
+        <span class="pv-ic" aria-hidden="true">💬</span>
+        <div><b>Contact form</b><span>Opens WhatsApp. Nothing is sent to our servers.</span></div>
+      </div>
+      <div class="pv-g reveal">
+        <span class="pv-ic" aria-hidden="true">🧮</span>
+        <div><b>Calculator</b><span>Runs in your browser. We do not save what you type.</span></div>
+      </div>
+      <div class="pv-g reveal">
+        <span class="pv-ic" aria-hidden="true">⭐</span>
+        <div><b>Reviews</b><span>Your name, rating, comment and date are stored with Google Firebase.</span></div>
+      </div>
+      <div class="pv-g reveal">
+        <span class="pv-ic" aria-hidden="true">📢</span>
+        <div><b>Advertising</b><span>Ads load only if you press “Accept” on our notice.</span></div>
+      </div>
+    </div>
   </div>
 </section>
+
+<!-- POLICY -->
+<section class="pv-main">
+  <div class="wrap pv-layout">
+
+    <nav class="pv-toc" aria-label="On this page">
+      <p class="pv-toc-title">On this page</p>
+      <ol>
+        <li><a href="#who">Who we are</a></li>
+        <li><a href="#collect">What we collect</a></li>
+        <li><a href="#storage">Where reviews are stored</a></li>
+        <li><a href="#ads">Advertising</a></li>
+        <li><a href="#rights">Your rights</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ol>
+    </nav>
+
+    <div class="pv-content">
+
+      <article class="pv-sec reveal" id="who">
+        <h2><span class="pv-num">1</span>Who we are</h2>
+        <p>Cash World is a bureau de change and money transfer business in Zimbabwe. This website, cashworld.co.zw, gives information about our services and branches.</p>
+      </article>
+
+      <article class="pv-sec reveal" id="collect">
+        <h2><span class="pv-num">2</span>What we collect</h2>
+        <div class="pv-items">
+          <div class="pv-item">
+            <div class="ic" aria-hidden="true">⭐</div>
+            <h3>Reviews</h3>
+            <p>If you send a review we store the name you type, your star rating, your comment and the date. We may publish it, and we may publish a reply to it.</p>
+          </div>
+          <div class="pv-item">
+            <div class="ic" aria-hidden="true">💬</div>
+            <h3>Contact form</h3>
+            <p>The contact form does not send anything to our servers. It opens WhatsApp with your message so you can send it to us yourself. WhatsApp's own privacy policy applies from that point.</p>
+          </div>
+          <div class="pv-item">
+            <div class="ic" aria-hidden="true">🧮</div>
+            <h3>Calculator</h3>
+            <p>The currency calculator runs in your browser. We do not save what you type.</p>
+          </div>
+          <div class="pv-item">
+            <div class="ic" aria-hidden="true">⚙️</div>
+            <h3>Your settings</h3>
+            <p>We save your light or dark mode choice and your advertising choice in your browser.</p>
+          </div>
+        </div>
+        <p class="pv-note"><b>Please note:</b> do not put phone numbers, ID numbers or other private details in a review.</p>
+      </article>
+
+      <article class="pv-sec reveal" id="storage">
+        <h2><span class="pv-num">3</span>Where reviews are stored</h2>
+        <p>Reviews are stored with Google Firebase (Cloud Firestore), a service provided by Google. Only our administrator can see unpublished reviews or remove reviews.</p>
+      </article>
+
+      <article class="pv-sec reveal" id="ads">
+        <h2><span class="pv-num">4</span>Advertising</h2>
+        <p>This site may show ads served by Google AdSense. Google and its partners may use cookies to show ads based on your visits to this and other websites. Ads load only if you press "Accept" on our notice.</p>
+        <p>You can read how Google uses information from sites that use its services at <a class="tx" href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener">policies.google.com/technologies/partner-sites</a>, and turn off personalised ads at <a class="tx" href="https://adssettings.google.com" target="_blank" rel="noopener">adssettings.google.com</a>.</p>
+        <p><button class="btn btn-line btn-sm" id="adChoiceBtn" type="button" hidden onclick="window.cwAdsChoice &amp;&amp; window.cwAdsChoice()">Change my advertising choice</button></p>
+      </article>
+
+      <article class="pv-sec reveal" id="rights">
+        <h2><span class="pv-num">5</span>Your rights</h2>
+        <p>You can ask us to remove a review you sent, or to tell you what we hold about you, by contacting us below.</p>
+      </article>
+
+      <article class="pv-sec reveal" id="contact">
+        <h2><span class="pv-num">6</span>Contact</h2>
+        <p>Get in touch using any of these details.</p>
+        <div class="pv-contact">
+          <a class="pv-cc" href="mailto:chauke@cashworld.co.zw">
+            <span class="pv-ic" aria-hidden="true">✉️</span>
+            <span><b>Email</b><span>chauke@cashworld.co.zw</span></span>
+          </a>
+          <a class="pv-cc" href="tel:+263242753437">
+            <span class="pv-ic" aria-hidden="true">📞</span>
+            <span><b>Call</b><span>+263 242 753 437</span></span>
+          </a>
+          <div class="pv-cc">
+            <span class="pv-ic" aria-hidden="true">📍</span>
+            <span><b>Head office</b><span>130, 2nd Avenue, Showgrounds, Harare</span></span>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
 </main>
 
 <footer>
@@ -79,9 +171,9 @@
         <a href="index.html" class="logo logo-foot" aria-label="Cash World home"><img class="logo-img" src="images/ChatGPT Image Jun 30, 2026, 11_26_32 AM (1).png" width="285" height="112" alt="Cash World"></a>
         <p style="margin-top:14px;max-width:300px;font-size:.92rem">Your Trusted Money Partner. Bureau de change, money transfer and bill payments in Zimbabwe.</p>
         <div class="socials">
-          <a href="#" target="_blank" rel="noopener">Facebook</a>
-          <a href="#" target="_blank" rel="noopener">Instagram</a>
-          <a href="#" target="_blank" rel="noopener">TikTok</a>
+          <a href="https://www.facebook.com/profile.php?id=61559407846797" target="_blank" rel="noopener" aria-label="Cash World on Facebook">Facebook</a>
+          <a href="https://www.instagram.com/cas.hworld?utm_source=ig_web_button_share_sheet&amp;dlrf=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener" aria-label="Cash World on Instagram">Instagram</a>
+          <a href="https://www.tiktok.com/@cashworldmoneytransfer?is_from_webapp=1&amp;sender_device=pc" target="_blank" rel="noopener" aria-label="Cash World on TikTok">TikTok</a>
           <a href="https://wa.me/263778577281" target="_blank" rel="noopener">WhatsApp</a>
         </div>
       </div>
@@ -96,5 +188,6 @@
 <script src="js/config.js"></script>
 <script src="js/main.js"></script>
 <script src="js/ads.js"></script>
+<script src="js/privacy.js"></script>
 </body>
 </html>
