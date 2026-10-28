@@ -4,7 +4,7 @@
    ========================================================= */
 
 /* ============ EDIT THESE ============ */
-const WHATSAPP = "263778577281";
+const WHATSAPP = "263717471617";
 
 // Indicative rates: how many units of each currency equal 1 USD.
 // UPDATE these whenever your rates change.
@@ -29,11 +29,7 @@ const BRANCHES = [
   {city:"Kwekwe", addr:"21 Nelson Mandela Way / 2nd, Kwekwe", tel:["+263 710 384 056"]},
   {city:"Bindura", addr:"C12 2nd Floor, Simwami Complex, Opposite N Richards, Bindura", tel:["+263 711 471 587"]},
   {city:"Zvishavane", addr:"Tees Complex, 1st Floor, Office 107, Zvishavane", tel:["+263 717 471 587"]},
-  {city:"Gweru", addr:"Shop 20, Bahudur Centre (upstairs), Gweru", tel:["+263 711 910 174"]},
-  {city:"Chiredzi", addr:"5466 Lion Drive, Chiredzi", tel:[], map:"https://business.google.com/n/9050032947305470139/searchprofile"},
-  {city:"Shurugwi", addr:"", tel:[]},
-  {city:"Kadoma", addr:"", tel:[]}
-  // Add another branch here: {city:"...", addr:"...", tel:["..."], map:"(optional Google Maps link)"}
+  {city:"Gweru", addr:"Shop 20, Bahudur Centre (upstairs), Gweru", tel:["+263 711 910 174"]}
 ];
 /* ==================================== */
 
