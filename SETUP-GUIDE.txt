@@ -47,7 +47,8 @@ PART A - REAL REVIEWS (Firebase, free plan is enough)
    You decide what to Publish. You can reply to, hide or delete any review.
 
 Notes
-- New reviews are never public until you press Publish.
+- New reviews appear on reviews.html straight away. In admin.html you can Hide or Delete any of them.
+- When signed in as admin, a "Delete review" button also shows under each review on reviews.html.
 - admin.html is hidden from search engines and is not linked in the menu, but
   the password is what really protects it.
 - Keep the admin password private. If you lose it, use "Add user" again or

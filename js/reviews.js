@@ -72,14 +72,14 @@
       return { ok: true, review: r };
     },
 
-    /* Visitors: send a new review. It waits for your approval. */
+    /* Visitors: send a new review. It is published straight away; you can hide or delete it later. */
     submit: async function (input) {
       var c = API.check(input);
       if (!c.ok) throw new Error(c.error);
       var last = parseInt(lsGet(LS_LAST) || "0", 10);
       if (Date.now() - last < 60000) throw new Error("Please wait a minute before sending another review.");
 
-      var doc = { name: c.review.name, rating: c.review.rating, text: c.review.text, status: "pending", createdAt: Date.now() };
+      var doc = { name: c.review.name, rating: c.review.rating, text: c.review.text, status: "approved", createdAt: Date.now() };
       if (configured) {
         var f = await fb();
         await f.db.collection("reviews").add(doc);

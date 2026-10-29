@@ -4,8 +4,8 @@
 // with the User UID of your admin account (Firebase > Authentication > Users).
 //
 // What these rules do:
-//  - Anyone can SEND a review, but only as "pending", with limited length and no reply.
-//  - The public can READ only reviews you have approved.
+//  - Anyone can SEND a review. It is published straight away (status "approved"), with limited length and no reply.
+//  - The public can READ only reviews that are published (not hidden by you).
 //  - Only your admin account can read everything, approve, hide, reply or delete.
 rules_version = '2';
 service cloud.firestore {
@@ -18,7 +18,7 @@ service cloud.firestore {
     match /reviews/{id} {
 
       allow create: if request.resource.data.keys().hasOnly(['name', 'rating', 'text', 'status', 'createdAt'])
-        && request.resource.data.status == 'pending'
+        && request.resource.data.status == 'approved'
         && request.resource.data.name is string
         && request.resource.data.name.size() >= 1 && request.resource.data.name.size() <= 60
         && request.resource.data.rating is int

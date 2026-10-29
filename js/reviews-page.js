@@ -17,7 +17,12 @@
 
   if (R.mode === "local") $("demoNote").hidden = false;
 
+  /* Delete buttons show only for the signed-in admin (or in demo mode). The database rules enforce this too. */
+  var isAdmin = R.mode === "local";
+  var shown = [];
+
   function renderList(list) {
+    shown = list;
     var box = $("reviewList");
     box.textContent = "";
 
@@ -51,6 +56,20 @@
         rep.appendChild(el("p", null, r.reply));
         card.appendChild(rep);
       }
+      if (isAdmin) {
+        var del = el("button", "btn btn-danger btn-sm", "Delete review");
+        del.type = "button";
+        del.style.marginTop = "12px";
+        del.addEventListener("click", function () {
+          if (!window.confirm("Delete this review for good?")) return;
+          del.disabled = true;
+          R.remove(r.id).then(load).catch(function (err) {
+            del.disabled = false;
+            window.alert("Could not delete: " + (err && err.message ? err.message : "unknown error"));
+          });
+        });
+        card.appendChild(del);
+      }
       box.appendChild(card);
     });
   }
@@ -78,8 +97,8 @@
       .then(function () {
         $("reviewForm").reset();
         msg.className = "form-msg ok";
-        msg.textContent = "Thank you! Your review has been received and will appear once we have approved it.";
-        if (R.mode === "local") load();
+        msg.textContent = "Thank you! Your review is now on this page.";
+        load();
       })
       .catch(function (err) {
         msg.className = "form-msg bad";
@@ -87,6 +106,13 @@
       })
       .then(function () { btn.disabled = false; });
   });
+
+  if (R.mode !== "local") {
+    R.auth.onChange(function (user) {
+      var now = !!user;
+      if (now !== isAdmin) { isAdmin = now; renderList(shown); }
+    });
+  }
 
   load();
 })();
