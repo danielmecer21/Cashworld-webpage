@@ -449,3 +449,23 @@ html[data-theme="dark"] .form-msg.bad{color:#ff8a80}
   .review{padding:18px}
   .stars label{font-size:2.4rem}
 }
+
+/* =========================================================
+   OPENING HOURS (filled in by js/main.js from the HOURS setting)
+   ========================================================= */
+.hours-list{list-style:none;display:grid;gap:6px;max-width:290px}
+.hours-list li{display:flex;justify-content:space-between;gap:18px;margin:0}
+.hours-list li span:last-child{font-weight:600;white-space:nowrap}
+.hours-list li.closed span:last-child{color:#c0392b}
+html[data-theme="dark"] .hours-list li.closed span:last-child,footer .hours-list li.closed span:last-child{color:#ff8b7c}
+.f-sub{margin-top:24px}
+.b-hours{margin-top:14px;padding-top:14px;border-top:1px dashed var(--border-2)}
+.b-hours b{display:block;font-size:.8rem;color:var(--heading);margin-bottom:8px}
+.b-hours .hours-list{max-width:none;font-size:.86rem;color:var(--muted)}
+.b-hours .hours-list li span:last-child{color:var(--ink)}
+.b-hours .hours-list li.closed span:last-child{color:#c0392b}
+html[data-theme="dark"] .b-hours .hours-list li.closed span:last-child{color:#ff8b7c}
+.ci .hours-list{margin-top:6px;color:var(--muted);font-size:.94rem}
+.ci .hours-list li span:last-child{color:var(--ink)}
+.ci .hours-list li.closed span:last-child{color:#c0392b}
+html[data-theme="dark"] .ci .hours-list li.closed span:last-child{color:#ff8b7c}

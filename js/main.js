@@ -31,9 +31,21 @@ const BRANCHES = [
   {city:"Zvishavane", addr:"Tees Complex, 1st Floor, Office 107, Zvishavane", tel:["+263 717 471 587"]},
   {city:"Gweru", addr:"Shop 20, Bahudur Centre (upstairs), Gweru", tel:["+263 711 910 174"]}
 ];
+
+// Opening hours, the same for every branch. Edit here and every page updates.
+// To give one branch different hours, add  hours:[...]  to that branch above.
+const HOURS = [
+  {days:"Mon – Fri", time:"8:30am – 4:30pm"},
+  {days:"Sat",       time:"9:00am – 2:00pm"},
+  {days:"Sun",       time:"Closed"}
+];
 /* ==================================== */
 
 const $ = id => document.getElementById(id);
+
+// Opening hours: fills every <ul data-hours> (footer on all pages, Contact page)
+const hoursHTML = list => list.map(r => `<li${/closed/i.test(r.time) ? ' class="closed"' : ''}><span>${r.days}</span><span>${r.time}</span></li>`).join("");
+document.querySelectorAll("[data-hours]").forEach(ul => { ul.innerHTML = hoursHTML(HOURS); });
 
 // Mobile menu
 document.querySelectorAll("#menu a").forEach(a => a.addEventListener("click", () => $("menu").classList.remove("open")));
@@ -69,6 +81,7 @@ if ($("branchGrid")) {
         ${b.addr ? `<p>📍 ${b.addr}</p>` : ''}
         ${b.tel.length ? b.tel.map(t=>`<p><a href="tel:${t.replace(/\s/g,'')}">📞 ${t}</a></p>`).join("") : (b.map ? '' : '<p><a href="contact.html">Contact us for details</a></p>')}
         ${b.map ? `<p><a href="${b.map}" target="_blank" rel="noopener">🗺️ View on Google</a></p>` : ''}
+        <div class="b-hours"><b>🕒 Opening hours</b><ul class="hours-list">${hoursHTML(b.hours || HOURS)}</ul></div>
       </div>`).join("");
     document.querySelectorAll(".tab").forEach(t => t.classList.toggle("active", t.dataset.c===filter));
   };
