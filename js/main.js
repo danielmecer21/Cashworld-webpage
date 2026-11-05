@@ -32,20 +32,66 @@ const BRANCHES = [
   {city:"Gweru", addr:"Shop 20, Bahudur Centre (upstairs), Gweru", tel:["+263 711 910 174"]}
 ];
 
-// Opening hours, the same for every branch. Edit here and every page updates.
+// Opening hours, the same for every branch. Edit here and every page updates:
+// the hours lists AND the live "Open now / Closed" badges.
+//   days  = label shown on the page
+//   dow   = the days of the week it covers (0 = Sunday ... 6 = Saturday)
+//   open / close = 24-hour times. Leave both out for a closed day.
 // To give one branch different hours, add  hours:[...]  to that branch above.
 const HOURS = [
-  {days:"Mon – Fri", time:"8:30am – 4:30pm"},
-  {days:"Sat",       time:"9:00am – 2:00pm"},
-  {days:"Sun",       time:"Closed"}
+  {days:"Mon – Fri", dow:[1,2,3,4,5], open:"08:30", close:"16:30"},
+  {days:"Sat",       dow:[6],         open:"09:00", close:"14:00"},
+  {days:"Sun",       dow:[0]}
 ];
 /* ==================================== */
 
 const $ = id => document.getElementById(id);
 
-// Opening hours: fills every <ul data-hours> (footer on all pages, Contact page)
-const hoursHTML = list => list.map(r => `<li${/closed/i.test(r.time) ? ' class="closed"' : ''}><span>${r.days}</span><span>${r.time}</span></li>`).join("");
+// ---- Opening hours + live "Open now" status ----
+const DAY_NAMES = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+const toMin = t => { const [h, m] = t.split(":").map(Number); return h * 60 + m; };
+const fmtTime = t => { const [h, m] = t.split(":").map(Number); return (h % 12 || 12) + ":" + String(m).padStart(2, "0") + (h >= 12 ? "pm" : "am"); };
+const rowTime = r => r.open ? fmtTime(r.open) + " – " + fmtTime(r.close) : "Closed";
+const hoursHTML = list => list.map(r => `<li${r.open ? "" : ' class="closed"'}><span>${r.days}</span><span>${rowTime(r)}</span></li>`).join("");
+
+// Zimbabwe time is UTC+2 all year (no daylight saving), so the status is right wherever the visitor is.
+const harareNow = () => { const t = new Date(Date.now() + 2 * 3600 * 1000); return { dow: t.getUTCDay(), min: t.getUTCHours() * 60 + t.getUTCMinutes() }; };
+const rowFor = (list, dow) => list.find(r => r.dow.includes(dow));
+
+function openStatus(list) {
+  const { dow, min } = harareNow();
+  const today = rowFor(list, dow);
+  if (today && today.open) {
+    const o = toMin(today.open), c = toMin(today.close);
+    if (min >= o && min < c) {
+      const left = c - min;
+      return left <= 30
+        ? { state: "soon", text: `Closing soon · ${left} min left` }
+        : { state: "open", text: `Open now · closes ${fmtTime(today.close)}` };
+    }
+    if (min < o) return { state: "closed", text: `Closed · opens today ${fmtTime(today.open)}` };
+  }
+  for (let i = 1; i <= 7; i++) {
+    const d = (dow + i) % 7, r = rowFor(list, d);
+    if (r && r.open) return { state: "closed", text: `Closed · opens ${i === 1 ? "tomorrow" : DAY_NAMES[d]} ${fmtTime(r.open)}` };
+  }
+  return { state: "closed", text: "Closed" };
+}
+
+// Fills every <span data-open-status> (home page, branch cards, contact page, footer)
+function updateOpenStatus() {
+  document.querySelectorAll("[data-open-status]").forEach(el => {
+    const br = BRANCHES.find(x => x.city === el.dataset.branch);
+    const s = openStatus((br && br.hours) || HOURS);
+    el.className = "live-pill is-" + s.state;
+    el.textContent = s.text;
+  });
+}
+
+// Fills every <ul data-hours> (footer on all pages, Contact page)
 document.querySelectorAll("[data-hours]").forEach(ul => { ul.innerHTML = hoursHTML(HOURS); });
+updateOpenStatus();
+setInterval(updateOpenStatus, 30000); // keeps it live: flips at opening/closing time without a reload
 
 // Mobile menu
 document.querySelectorAll("#menu a").forEach(a => a.addEventListener("click", () => $("menu").classList.remove("open")));
@@ -78,12 +124,14 @@ if ($("branchGrid")) {
       <div class="branch">
         ${b.hq?'<span class="hq">HEAD OFFICE</span>':''}
         <h3>${b.city}</h3>
+        <span data-open-status data-branch="${b.city}"></span>
         ${b.addr ? `<p>📍 ${b.addr}</p>` : ''}
         ${b.tel.length ? b.tel.map(t=>`<p><a href="tel:${t.replace(/\s/g,'')}">📞 ${t}</a></p>`).join("") : (b.map ? '' : '<p><a href="contact.html">Contact us for details</a></p>')}
         ${b.map ? `<p><a href="${b.map}" target="_blank" rel="noopener">🗺️ View on Google</a></p>` : ''}
         <div class="b-hours"><b>🕒 Opening hours</b><ul class="hours-list">${hoursHTML(b.hours || HOURS)}</ul></div>
       </div>`).join("");
     document.querySelectorAll(".tab").forEach(t => t.classList.toggle("active", t.dataset.c===filter));
+    updateOpenStatus();
   };
   $("tabs").innerHTML = ["All",...BRANCHES.map(b=>b.city)].map(c => `<button class="tab" data-c="${c}">${c}</button>`).join("");
   $("tabs").addEventListener("click", e => { if(e.target.dataset.c) render(e.target.dataset.c); });
