@@ -469,3 +469,22 @@ html[data-theme="dark"] .b-hours .hours-list li.closed span:last-child{color:#ff
 .ci .hours-list li span:last-child{color:var(--ink)}
 .ci .hours-list li.closed span:last-child{color:#c0392b}
 html[data-theme="dark"] .ci .hours-list li.closed span:last-child{color:#ff8b7c}
+
+/* =========================================================
+   LIVE "OPEN NOW" BADGE (text and colour set by js/main.js)
+   ========================================================= */
+.live-pill{display:inline-flex;align-items:center;gap:8px;padding:5px 13px;border-radius:14px;font-size:.8rem;font-weight:700;line-height:1.35;border:1px solid transparent;background:rgba(30,142,78,.14);color:#1e8e4e;border-color:rgba(30,142,78,.38)}
+.live-pill:empty{display:none}
+.live-pill::before{content:"";flex:none;width:8px;height:8px;border-radius:50%;background:currentColor}
+.live-pill.is-open::before{animation:livepulse 1.8s ease-out infinite}
+@keyframes livepulse{0%{box-shadow:0 0 0 0 rgba(30,142,78,.55)}70%{box-shadow:0 0 0 7px rgba(30,142,78,0)}100%{box-shadow:0 0 0 0 rgba(30,142,78,0)}}
+.live-pill.is-soon{background:rgba(212,150,20,.16);color:#9a6a00;border-color:rgba(212,150,20,.5)}
+.live-pill.is-closed{background:rgba(192,57,43,.11);color:#c0392b;border-color:rgba(192,57,43,.36)}
+html[data-theme="dark"] .live-pill.is-open,footer .live-pill.is-open,.hero .live-pill.is-open{background:rgba(95,211,145,.14);color:#5fd391;border-color:rgba(95,211,145,.42)}
+html[data-theme="dark"] .live-pill.is-soon,footer .live-pill.is-soon,.hero .live-pill.is-soon{background:rgba(255,200,87,.15);color:#ffc857;border-color:rgba(255,200,87,.45)}
+html[data-theme="dark"] .live-pill.is-closed,footer .live-pill.is-closed,.hero .live-pill.is-closed{background:rgba(255,139,124,.13);color:#ff8b7c;border-color:rgba(255,139,124,.4)}
+.hero-status{margin:-10px 0 22px}
+.branch .live-pill{margin:0 0 8px;font-size:.76rem}
+.ci .live-pill{margin:8px 0 6px}
+footer .live-pill{margin:0 0 12px}
+@media(prefers-reduced-motion:reduce){.live-pill.is-open::before{animation:none}}
