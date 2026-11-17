@@ -68,7 +68,7 @@
       <div class="field"><label for="topic">I'm interested in</label>
         <select id="topic"><option>Currency exchange</option><option>Money transfer</option><option>Bill payments</option><option>Something else</option></select></div>
       <div class="field"><label for="msg">Message</label><textarea id="msg" placeholder="How can we help?"></textarea></div>
-      <button class="btn btn-navy" type="submit" style="width:100%;justify-content:center">Send via WhatsApp</button>
+      <div class="hp" aria-hidden="true"><label>Leave this empty<input id="contactWebsite" tabindex="-1" autocomplete="off"></label></div><button class="btn btn-navy" id="contactSend" type="submit" style="width:100%;justify-content:center">Send enquiry</button><p class="form-msg" id="contactMsg" role="status"></p><p class="hint">You can also contact us directly using the WhatsApp button.</p>
     </form>
   </div>
 </section>
