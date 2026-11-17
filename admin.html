@@ -40,13 +40,13 @@
 <section class="page-hero" style="padding-bottom:56px">
   <div class="wrap">
     <div class="crumbs"><a href="index.html">Home</a> / Admin</div>
-    <h1>Manage reviews</h1>
-    <p>Read what customers say, publish or hide reviews, and reply to them.</p>
+    <h1>Manage customer feedback</h1>
+    <p>Review customer feedback, manage enquiries and publish approved reviews.</p>
   </div>
 </section>
 <section class="admin">
   <div class="wrap">
-    <div id="demoNote" class="notice" hidden><b>Demo mode.</b> No database is connected, so there is no login and you only see reviews sent from this same browser. Once you connect Firebase (SETUP-GUIDE.txt), this page asks for your admin email and password.</div>
+    <div class="notice">Private Cash World dashboard. Sign in to view customer reviews and enquiries.</div>
     <div id="adminMsg" class="notice" hidden role="alert"></div>
 
     <form class="form login" id="loginForm" hidden>
@@ -63,7 +63,7 @@
         <button class="btn btn-line btn-sm" id="signOut" type="button" hidden>Sign out</button>
       </div>
       <div class="tabs" id="filters"></div>
-      <div id="adminList"></div>
+      <div id="adminList"></div><h2 style="margin:36px 0 16px">Customer enquiries</h2><div id="enquiryList"></div>
     </div>
   </div>
 </section>
@@ -90,7 +90,7 @@
 </footer>
 
 
-<script src="js/config.js"></script>
+<script src=""></script>
 <script src="js/reviews.js"></script>
 <script src="js/main.js"></script>
 <script src="js/admin.js"></script>
