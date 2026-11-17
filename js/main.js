@@ -138,12 +138,21 @@ if ($("branchGrid")) {
   render("All");
 }
 
-// Contact form -> WhatsApp (contact page only)
+// Contact form -> save enquiry to the Cash World database.
 if ($("contactForm")) {
-  $("contactForm").addEventListener("submit", e => {
+  $("contactForm").addEventListener("submit", async e => {
     e.preventDefault();
-    const m = `Hello Cash World,\nName: ${$("name").value}\nPhone: ${$("phone").value}\nInterested in: ${$("topic").value}\n${$("msg").value}`;
-    window.open("https://wa.me/" + WHATSAPP + "?text=" + encodeURIComponent(m), "_blank");
+    const btn=$("contactSend"), status=$("contactMsg");
+    if ($("contactWebsite").value) return;
+    btn.disabled=true; status.className="form-msg"; status.textContent="Sending...";
+    try {
+      const response=await fetch("api/contact.php",{method:"POST",headers:{"Content-Type":"application/json"},credentials:"same-origin",
+        body:JSON.stringify({name:$("name").value,phone:$("phone").value,topic:$("topic").value,message:$("msg").value})});
+      const data=await response.json();
+      if(!response.ok||!data.ok) throw new Error(data.message||"Could not send your enquiry.");
+      $("contactForm").reset();status.className="form-msg ok";status.textContent="Thank you. Your enquiry has been received.";
+    } catch(err) { status.className="form-msg bad";status.textContent=err.message||"Please try again later."; }
+    finally { btn.disabled=false; }
   });
 }
 
