@@ -156,6 +156,21 @@ if ($("contactForm")) {
   });
 }
 
+// Contact form -> alternative: open WhatsApp with the enquiry filled in.
+if ($("contactWa")) {
+  $("contactWa").addEventListener("click", () => {
+    const status=$("contactMsg");
+    const name=$("name").value.trim(), phone=$("phone").value.trim();
+    if (!name || !phone) { status.className="form-msg bad"; status.textContent="Please enter your name and phone number first."; return; }
+    const lines=["Hello Cash World,","Name: "+name,"Phone: "+phone,"Interested in: "+$("topic").value];
+    const m=$("msg").value.trim();
+    if (m) lines.push("Message: "+m);
+    const url="https://wa.me/263717471617?text="+encodeURIComponent(lines.join("\n"));
+    status.className="form-msg ok"; status.textContent="Opening WhatsApp...";
+    window.open(url,"_blank","noopener");
+  });
+}
+
 // Light / dark mode button (theme.js in the <head> sets the theme before the page paints)
 (function () {
   const btn = $("themeToggle");
