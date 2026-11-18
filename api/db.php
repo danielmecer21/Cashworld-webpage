@@ -20,7 +20,7 @@ function db(): PDO {
     ]);
     return $pdo;
 }
-function json_out(array $data, int $status = 200): never {
+function json_out(array $data, int $status = 200) {
     http_response_code($status);
     header('Content-Type: application/json; charset=utf-8');
     header('Cache-Control: no-store');
